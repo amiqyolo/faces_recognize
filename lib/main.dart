@@ -13,6 +13,7 @@ class FaceRecognitionApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: FaceRecognitionScreen(),
     );
   }
@@ -99,29 +100,35 @@ class _FaceRecognitionScreenState extends State<FaceRecognitionScreen> {
       appBar: AppBar(
         title: Text("Face Recognition"),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: ListView(
         children: [
-          _buildImagePreview(_referenceImage, "Reference Image"),
-          ElevatedButton(
-            onPressed: () => _pickImage(true),
-            child: Text("Pick Reference Image"),
-          ),
-          SizedBox(height: 20),
-          _buildImagePreview(_inputImage, "Input Image"),
-          ElevatedButton(
-            onPressed: () => _pickImage(false),
-            child: Text("Pick Input Image"),
-          ),
-          SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: _compareFaces,
-            child: Text("Compare Faces"),
-          ),
-          SizedBox(height: 20),
-          Text(
-            _result,
-            style: TextStyle(fontSize: 16, color: Colors.blue),
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _buildImagePreview(_referenceImage, "Reference Image"),
+                ElevatedButton(
+                  onPressed: () => _pickImage(true),
+                  child: Text("Pick Reference Image"),
+                ),
+                SizedBox(height: 20),
+                _buildImagePreview(_inputImage, "Input Image"),
+                ElevatedButton(
+                  onPressed: () => _pickImage(false),
+                  child: Text("Pick Input Image"),
+                ),
+                SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: _compareFaces,
+                  child: Text("Compare Faces"),
+                ),
+                SizedBox(height: 20),
+                Text(
+                  _result,
+                  style: TextStyle(fontSize: 16, color: Colors.blue),
+                ),
+              ],
+            ),
           ),
         ],
       ),
