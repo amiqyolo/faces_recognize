@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_mlkit_face_detection/google_mlkit_face_detection.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:path_provider/path_provider.dart';
 
 void main() => runApp(const FaceRecognitionApp());
 
@@ -98,7 +97,7 @@ class _FaceRecognitionScreenState extends State<FaceRecognitionScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Face Recognition"),
+        title: const Text("Face Recognition"),
       ),
       body: ListView(
         children: [
@@ -106,26 +105,26 @@ class _FaceRecognitionScreenState extends State<FaceRecognitionScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                _buildImagePreview(_referenceImage, "Reference Image"),
+                _buildImagePreview(_referenceImage, "Model Reference Image"),
                 ElevatedButton(
                   onPressed: () => _pickImage(true),
-                  child: Text("Pick Reference Image"),
+                  child: const Text("Pick Model Image"),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 _buildImagePreview(_inputImage, "Input Image"),
                 ElevatedButton(
                   onPressed: () => _pickImage(false),
-                  child: Text("Pick Input Image"),
+                  child: const Text("Pick Input Image"),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: _compareFaces,
-                  child: Text("Compare Faces"),
+                  child: const Text("Compare Faces"),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Text(
                   _result,
-                  style: TextStyle(fontSize: 16, color: Colors.blue),
+                  style: const TextStyle(fontSize: 16, color: Colors.blue),
                 ),
               ],
             ),
@@ -139,14 +138,14 @@ class _FaceRecognitionScreenState extends State<FaceRecognitionScreen> {
     return Column(
       children: [
         Text(label),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         imageFile != null
             ? Image.file(imageFile, height: 150)
             : Container(
                 width: 150,
                 height: 150,
                 color: Colors.grey[300],
-                child: Center(child: Text("No image selected")),
+                child: const Center(child: Text("No image selected")),
               ),
       ],
     );
